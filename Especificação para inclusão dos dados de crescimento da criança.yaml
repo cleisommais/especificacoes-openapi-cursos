@@ -1,0 +1,265 @@
+openapi: 3.0.0
+info:
+  title: Especificação para inclusão dos dados de crescimento da criança
+  description: Especificação para inclusão dos dados de crescimento da criança
+  contact:
+    email: suport@estiatraining.com
+  version: 1.0.0
+servers:
+- url: /
+security:
+- application:
+  - read
+  - write
+paths:
+  /progress:
+    get:
+      summary: Recuperar todas os progressos de todas as contas
+      parameters:
+      - name: token
+        in: header
+        description: Token JWT no header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            format: string
+        example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0LXN1YmplY3QiLCJhdWQiOlsiYXVkaWVuY2UxIiwiYXVkaWVuY2UyIl0sImlzcyI6InVybjovL2FwaWdlZS1lZGdlLUpXVC1wb2xpY3ktdGVzdCIsImV4cCI6MTU0NDA2NDgzNCwiaWF0IjoxNTQ0MDM2MDM0LCJqdGkiOiJmODU2NTkzNS1mODViLTRmNGQtYTcxNy1lNjcwNjhmNzUyOWIiLCJ1c2VybmFtZSI6ImNsZWlzb24ifQ.Oq22-GmBSexCk_SP2zX0e3sgHJrsYSNT_74RIK1Yxfo
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_response'
+        400:
+          description: Dados request enviados incorretos
+        401:
+          description: Token invalido, inexistente ou expirado
+        500:
+          description: Erro no servidor
+    post:
+      summary: Cria um novo progresso
+      parameters:
+      - name: token
+        in: header
+        description: Token JWT no header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            format: string
+        example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0LXN1YmplY3QiLCJhdWQiOlsiYXVkaWVuY2UxIiwiYXVkaWVuY2UyIl0sImlzcyI6InVybjovL2FwaWdlZS1lZGdlLUpXVC1wb2xpY3ktdGVzdCIsImV4cCI6MTU0NDA2NDgzNCwiaWF0IjoxNTQ0MDM2MDM0LCJqdGkiOiJmODU2NTkzNS1mODViLTRmNGQtYTcxNy1lNjcwNjhmNzUyOWIiLCJ1c2VybmFtZSI6ImNsZWlzb24ifQ.Oq22-GmBSexCk_SP2zX0e3sgHJrsYSNT_74RIK1Yxfo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_request'
+        required: true
+      responses:
+        201:
+          description: Criado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_response'
+        400:
+          description: Dados request enviados incorretos
+        401:
+          description: Token invalido, inexistente ou expirado
+        500:
+          description: Erro no servidor
+  /progress/{id}:
+    get:
+      summary: Recuperar um progresso pelo id
+      parameters:
+      - name: id
+        in: path
+        description: Id de identificação do progresso
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        description: Token JWT no header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            format: string
+        example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0LXN1YmplY3QiLCJhdWQiOlsiYXVkaWVuY2UxIiwiYXVkaWVuY2UyIl0sImlzcyI6InVybjovL2FwaWdlZS1lZGdlLUpXVC1wb2xpY3ktdGVzdCIsImV4cCI6MTU0NDA2NDgzNCwiaWF0IjoxNTQ0MDM2MDM0LCJqdGkiOiJmODU2NTkzNS1mODViLTRmNGQtYTcxNy1lNjcwNjhmNzUyOWIiLCJ1c2VybmFtZSI6ImNsZWlzb24ifQ.Oq22-GmBSexCk_SP2zX0e3sgHJrsYSNT_74RIK1Yxfo '
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_response'
+        400:
+          description: Dados request enviados incorretos
+        401:
+          description: Token invalido, inexistente ou expirado
+        404:
+          description: Recurso {id} não encontrado
+        500:
+          description: Erro no servidor
+    put:
+      summary: Atualizar um progresso pelo id
+      parameters:
+      - name: id
+        in: path
+        description: Id de identificação do progresso
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        description: Token JWT no header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            format: string
+        example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0LXN1YmplY3QiLCJhdWQiOlsiYXVkaWVuY2UxIiwiYXVkaWVuY2UyIl0sImlzcyI6InVybjovL2FwaWdlZS1lZGdlLUpXVC1wb2xpY3ktdGVzdCIsImV4cCI6MTU0NDA2NDgzNCwiaWF0IjoxNTQ0MDM2MDM0LCJqdGkiOiJmODU2NTkzNS1mODViLTRmNGQtYTcxNy1lNjcwNjhmNzUyOWIiLCJ1c2VybmFtZSI6ImNsZWlzb24ifQ.Oq22-GmBSexCk_SP2zX0e3sgHJrsYSNT_74RIK1Yxfo '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_request'
+        required: true
+      responses:
+        202:
+          description: Aceito
+        400:
+          description: Dados request enviados incorretos
+        401:
+          description: Token invalido, inexistente ou expirado
+        404:
+          description: Recurso {id} não encontrado
+        500:
+          description: Erro no servidor
+    delete:
+      summary: Excluir um progresso pelo id
+      parameters:
+      - name: id
+        in: path
+        description: Id de identificação do progresso
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        description: Token JWT no header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            format: string
+        example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0LXN1YmplY3QiLCJhdWQiOlsiYXVkaWVuY2UxIiwiYXVkaWVuY2UyIl0sImlzcyI6InVybjovL2FwaWdlZS1lZGdlLUpXVC1wb2xpY3ktdGVzdCIsImV4cCI6MTU0NDA2NDgzNCwiaWF0IjoxNTQ0MDM2MDM0LCJqdGkiOiJmODU2NTkzNS1mODViLTRmNGQtYTcxNy1lNjcwNjhmNzUyOWIiLCJ1c2VybmFtZSI6ImNsZWlzb24ifQ.Oq22-GmBSexCk_SP2zX0e3sgHJrsYSNT_74RIK1Yxfo '
+      responses:
+        204:
+          description: Sem conteúdo
+        400:
+          description: Dados request enviados incorretos
+        401:
+          description: Token invalido, inexistente ou expirado
+        404:
+          description: Recurso {id} não encontrado
+        500:
+          description: Erro no servidor
+components:
+  schemas:
+    body_response:
+      required:
+      - account
+      - dateProgress
+      - headCircumference
+      - height
+      - id
+      - weight
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1
+        height:
+          type: number
+        weight:
+          type: number
+          example: 45
+        headCircumference:
+          type: number
+        dateProgress:
+          type: string
+          format: date
+        account:
+          $ref: '#/components/schemas/body_response_account'
+    body_request:
+      required:
+      - account
+      - dateProgress
+      - headCircumference
+      - height
+      - weight
+      type: object
+      properties:
+        height:
+          type: number
+        weight:
+          type: number
+          example: 45
+        headCircumference:
+          type: number
+        dateProgress:
+          type: string
+          format: date
+        account:
+          $ref: '#/components/schemas/body_response_account'
+    body_response_account:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1
+        firstName:
+          type: string
+          example: First
+        lastName:
+          type: string
+          example: Last
+        email:
+          type: string
+          format: email
+          example: admin@admin.com
+        dateBirth:
+          type: string
+          format: date
+        gender:
+          type: string
+          example: M
+          enum:
+          - M
+          - F

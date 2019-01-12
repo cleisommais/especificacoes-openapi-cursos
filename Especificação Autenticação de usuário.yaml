@@ -1,0 +1,67 @@
+openapi: 3.0.0
+info:
+  title: Especificação Autenticação de usuário
+  description: Especificação Autenticação de usuário
+  contact:
+    email: suport@estiatraining.com
+  version: 1.0.0
+servers:
+  - url: /
+paths:
+  /login:
+    post:
+      summary: Login do usuário
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_request'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_response'
+        400:
+          description: Dados request enviados incorretos
+        401:
+          description: Password incorreto
+        404:
+          description: Usuaário não encontrado
+        500:
+          description: Erro no servidor
+components:
+  schemas:
+    body_request:
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          minimum: 1
+          type: string
+          format: email
+          example: admin
+        password:
+          minimum: 1
+          type: string
+          format: password
+          example: '123'
+    body_response:
+      required:
+        - email
+        - firstName
+        - id
+        - lastName
+        - token
+      type: object
+      properties:
+        token:
+          type: string
+          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0LXN1YmplY3QiLCJhdWQiOlsiYXVkaWVuY2UxIiwiYXVkaWVuY2UyIl0sImlzcyI6InVybjovL2FwaWdlZS1lZGdlLUpXVC1wb2xpY3ktdGVzdCIsImV4cCI6MTU0NDA2NDgzNCwiaWF0IjoxNTQ0MDM2MDM0LCJqdGkiOiJmODU2NTkzNS1mODViLTRmNGQtYTcxNy1lNjcwNjhmNzUyOWIiLCJ1c2VybmFtZSI6ImNsZWlzb24ifQ.Oq22-GmBSexCk_SP2zX0e3sgHJrsYSNT_74RIK1Yxfo
+        account:
+          type: string
+          example: '{"id":1,"email":"admin@admin.com","firstName":"First","lastName":"Last"}'

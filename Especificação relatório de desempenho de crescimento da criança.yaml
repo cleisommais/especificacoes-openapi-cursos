@@ -1,0 +1,73 @@
+openapi: 3.0.0
+info:
+  title: Especificação relatório de desempenho de crescimento da criança
+  description: Especificação relatório de desempenho de crescimento da criança
+  contact:
+    email: suport@estiatraining.com
+  version: 1.0.0
+servers:
+- url: /
+security:
+- application:
+  - read
+  - write
+paths:
+  /accounts/{email}/progress:
+    get:
+      summary: Recuperar progresso de crescimento das crianças pelo email da conta de usuário
+      parameters:
+      - name: email
+        in: path
+        description: email de identificação da conta de usuário
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        description: Token JWT no header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            format: string
+        example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0LXN1YmplY3QiLCJhdWQiOlsiYXVkaWVuY2UxIiwiYXVkaWVuY2UyIl0sImlzcyI6InVybjovL2FwaWdlZS1lZGdlLUpXVC1wb2xpY3ktdGVzdCIsImV4cCI6MTU0NDA2NDgzNCwiaWF0IjoxNTQ0MDM2MDM0LCJqdGkiOiJmODU2NTkzNS1mODViLTRmNGQtYTcxNy1lNjcwNjhmNzUyOWIiLCJ1c2VybmFtZSI6ImNsZWlzb24ifQ.Oq22-GmBSexCk_SP2zX0e3sgHJrsYSNT_74RIK1Yxfo
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_response'
+        400:
+          description: Dados request enviados incorretos
+        401:
+          description: Token invalido, inexistente ou expirado
+        404:
+          description: Recurso {email} não encontrado
+        500:
+          description: Erro no servidor
+components:
+  schemas:
+    body_response:
+      required:
+      - dateProgress
+      - headCircumference
+      - height
+      - weight
+      type: object
+      properties:
+        height:
+          type: number
+        weight:
+          type: number
+          example: 45
+        headCircumference:
+          type: number
+        dateProgress:
+          type: string
+          format: date
