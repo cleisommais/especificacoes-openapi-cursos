@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GenerateJWT async="false" continueOnError="false" enabled="true" name="Gerar-JWT-Token">
+    <DisplayName>Gerar JWT Token</DisplayName>
+    <Algorithm>HS256</Algorithm>
+    <SecretKey>
+        <Value ref="private.key"/>
+    </SecretKey>
+    <Subject>subject-subject</Subject>
+    <Issuer>urn://apigee-edge-JWT-policy-test</Issuer>
+    <Audience>audience1,audience2</Audience>
+    <ExpiresIn>8h</ExpiresIn>
+    <AdditionalClaims>
+        <Claim name="estia" type="string">training courses</Claim>
+    </AdditionalClaims>
+    <OutputVariable>jwt-variable</OutputVariable>
+</GenerateJWT>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="Incluir-JWT-Token-Header">
+    <DisplayName>Incluir JWT Token Header</DisplayName>
+    <Properties/>
+    <Add>
+        <Headers>
+            <Header name="token">{jwt-variable}</Header>
+        </Headers>
+    </Add>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="Defenir-Chave-privada-JWT">
+    <DisplayName>Defenir Chave privada JWT</DisplayName>
+    <Properties/>
+    <AssignVariable>
+        <Name>private.key</Name>
+        <Value>SmVzdXMgw6kgbyDDum5pY28gc2FsdmFkb3Ih</Value>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>
+
+<? xml version = "1.0" encoding = "UTF-8" standalone = "yes" ?>
+<VerifyJWT async="false" continueOnError="false" enabled="true" name="Verificar-JWT-Token">
+    <DisplayName>Verificar JWT Token</DisplayName>
+    <Algorithm>HS256</Algorithm>
+    <Source>request.header.token</Source>
+    <SecretKey>
+        <Value ref="private.key" />
+    </SecretKey>
+    <Subject>subject-subject</Subject>
+    <Issuer>urn://apigee-edge-JWT-policy-test</Issuer>
+    <Audience>audience1,audience2</Audience>
+    <AdditionalClaims>
+        <Claim name="estia" type="string">training courses</Claim>
+    </AdditionalClaims>
+</VerifyJWT>

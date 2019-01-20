@@ -1,0 +1,576 @@
+{
+	"info": {
+		"_postman_id": "5b3ff89b-289a-4311-a91d-94593dcd5a48",
+		"name": "APIS gestão de crescimento",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autenticação e autorização",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aee2d4b3-9c5d-4a7a-91cb-00c8b59f8fe1",
+						"exec": [
+							"pm.test(\"Validar se o código de status é 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Validar se existe o token no response body.\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(pm.response.text()).to.include(\"token\");",
+							"    pm.environment.set(\"token\", jsonData.token);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"1\"\n}"
+				},
+				"url": {
+					"raw": "{{url-auth}}/login",
+					"host": [
+						"{{url-auth}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recuperar todos os usuários",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fa0424b2-bebc-4794-8346-f19b22072cbe",
+						"exec": [
+							"pm.test(\"Validar se o código de status é 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Validar se o corpo da resposta contem email\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"email\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url-accounts}}/accounts",
+					"host": [
+						"{{url-accounts}}"
+					],
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar um usuário",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "651ab5ed-4a83-464d-ac55-578dba92e516",
+						"exec": [
+							"pm.test(\"Validar se o código de status é 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Validar se existe o id no response body.\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(pm.response.text()).to.include(\"_id\");",
+							"    pm.environment.set(\"id_account\", jsonData._id);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Cleison\",\n    \"lastName\": \"Melo\",\n    \"email\": \"cleison@test.com\",\n    \"phoneNumber\": 21216546,\n    \"password\": \"1\",\n    \"dateBirth\": \"1900-01-01T00:00:00.000Z\",\n    \"gender\": \"M\"\n}"
+				},
+				"url": {
+					"raw": "{{url-accounts}}/accounts",
+					"host": [
+						"{{url-accounts}}"
+					],
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recuperar uma conta pelo ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d0c9edc7-b532-4e4a-bef3-0bfce5ec358e",
+						"exec": [
+							"pm.test(\"Validar se o código de status é 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Validar se existe o id no response body.\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(pm.response.text()).to.include(\"_id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url-accounts}}/accounts/{{id_account}}",
+					"host": [
+						"{{url-accounts}}"
+					],
+					"path": [
+						"accounts",
+						"{{id_account}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar uma conta pelo ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e7e9a198-0526-4105-89ed-a8f30c494fa3",
+						"exec": [
+							"pm.test(\"Validar se o código de status é 202\", function () {",
+							"    pm.response.to.have.status(202);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Jorge\",\n    \"lastName\": \"Alberto\",\n    \"email\": \"jorge@test.com\",\n    \"phoneNumber\": 8888888,\n    \"password\": \"1\",\n    \"dateBirth\": \"1900-01-01T00:00:00.000Z\",\n    \"gender\": \"M\"\n}"
+				},
+				"url": {
+					"raw": "{{url-accounts}}/accounts/{{id_account}}",
+					"host": [
+						"{{url-accounts}}"
+					],
+					"path": [
+						"accounts",
+						"{{id_account}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remover um usuário pelo ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e3b7a2d-0e01-4518-a17e-424a7256a6a0",
+						"exec": [
+							"pm.test(\"Validar se o código de status é 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url-accounts}}/accounts/{{id_account}}",
+					"host": [
+						"{{url-accounts}}"
+					],
+					"path": [
+						"accounts",
+						"{{id_account}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recuperar todos os progressos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "50ca005c-d1e9-4fc2-b1bf-4c790fdda1f6",
+						"exec": [
+							"pm.test(\"Validar se o código de status é 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Validar se o corpo da resposta contem email\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"email\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url-progress}}/progress",
+					"host": [
+						"{{url-progress}}"
+					],
+					"path": [
+						"progress"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar um novo progresso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "96d798ab-eb7e-406e-a431-f1cbaed38220",
+						"exec": [
+							"pm.test(\"Validar se o código de status é 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Validar se existe o id no response body.\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(pm.response.text()).to.include(\"_id\");",
+							"    pm.environment.set(\"id_progress\", jsonData._id);",
+							"    pm.environment.set(\"email\", jsonData.account.email);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"account\": {\n        \"id\": 1,\n        \"firstName\": \"Admin\",\n        \"lastName\": \"Test\",\n        \"email\": \"test@test.com\",\n        \"dateBirth\": \"1900-01-01T00:00:00.000Z\",\n        \"gender\": \"M\"\n    },\n    \"height\": 1.15,\n    \"weight\": 100,\n    \"headCircumference\": 540,\n    \"dateProgress\": \"2015-01-01T00:00:00.000Z\",\n    \"__v\": 0\n}"
+				},
+				"url": {
+					"raw": "{{url-progress}}/progress",
+					"host": [
+						"{{url-progress}}"
+					],
+					"path": [
+						"progress"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recuperar um progresso pelo ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62f14bff-3c16-45bb-9d14-4c4ee66cf30e",
+						"exec": [
+							"pm.test(\"Validar se o código de status é 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Validar se existe o id no response body.\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(pm.response.text()).to.include(\"_id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url-progress}}/progress/{{id_progress}}",
+					"host": [
+						"{{url-progress}}"
+					],
+					"path": [
+						"progress",
+						"{{id_progress}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar um progresso pelo ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dbeaf28f-c0ce-45c3-8539-7f6fc418b58c",
+						"exec": [
+							"pm.test(\"Validar se o código de status é 202\", function () {",
+							"    pm.response.to.have.status(202);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"account\": {\n        \"id\": 1,\n        \"firstName\": \"Admin\",\n        \"lastName\": \"Test\",\n        \"email\": \"test@test.com\",\n        \"dateBirth\": \"1900-01-01T00:00:00.000Z\",\n        \"gender\": \"M\"\n    },\n    \"height\": 555,\n    \"weight\": 6696,\n    \"headCircumference\": 5498,\n    \"dateProgress\": \"2015-01-01T00:00:00.000Z\"\n}"
+				},
+				"url": {
+					"raw": "{{url-progress}}/progress/{{id_progress}}",
+					"host": [
+						"{{url-progress}}"
+					],
+					"path": [
+						"progress",
+						"{{id_progress}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar um progresso pelo ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "47887f11-0a2a-4589-9ce6-3258346269af",
+						"exec": [
+							"pm.test(\"Validar se o código de status é 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url-progress}}/progress/{{id_progress}}",
+					"host": [
+						"{{url-progress}}"
+					],
+					"path": [
+						"progress",
+						"{{id_progress}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Relatório de crescimento por email do usuário",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2c5984e2-0383-4b98-89a8-bd64bf2220b0",
+						"exec": [
+							"pm.test(\"Validar se o código de status é 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Validar se existe o height no response body.\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"height\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url-report}}/accounts/{{email}}/progress",
+					"host": [
+						"{{url-report}}"
+					],
+					"path": [
+						"accounts",
+						"{{email}}",
+						"progress"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

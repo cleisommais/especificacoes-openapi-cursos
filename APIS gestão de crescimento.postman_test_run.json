@@ -1,0 +1,806 @@
+{
+	"id": "bf8ed099-55e1-409f-b87d-a3bac919dc43",
+	"name": "APIS gestão de crescimento",
+	"allTests": [],
+	"timestamp": "2019-01-19T19:04:13.085Z",
+	"collection_id": "5b3ff89b-289a-4311-a91d-94593dcd5a48",
+	"folder_id": 0,
+	"target_type": "collection",
+	"environment_id": "8e191a80-a482-4292-8695-2474d1220be6",
+	"data": [],
+	"delay": 0,
+	"count": 1,
+	"collection": {
+		"id": "5b3ff89b-289a-4311-a91d-94593dcd5a48",
+		"name": "APIS gestão de crescimento",
+		"description": "",
+		"auth": null,
+		"events": null,
+		"variables": [],
+		"order": [
+			"bc91b5b5-38c0-4252-8eef-3311ee65eb7e",
+			"9c35cd88-8b3b-4943-8979-e5e7d19fefe8",
+			"64889574-0d94-49ba-bd08-443d6cc54303",
+			"7b10e372-ed86-4f1a-91f6-94140f76f54e",
+			"1ecf4ea6-4776-4775-ab9f-7f4cee24b695",
+			"4c956fc2-17c8-4ff5-9166-8f5bd04881e0",
+			"62d32675-13a7-442a-9055-ea367187ca80",
+			"d17c65e2-186c-467e-a2af-07edb2a28fa2",
+			"a9f00080-2b30-4851-9aec-6a1f6145937d",
+			"7a77856b-4613-420f-b968-02737b61db86",
+			"a1fe1ae6-f779-40e6-bd95-119ec5e19a08",
+			"f2fc8573-009e-4876-acca-a0db2e035108"
+		],
+		"folders_order": [],
+		"owner": "3327099",
+		"permissions": {},
+		"favorite": false,
+		"shared": false,
+		"type": "collection",
+		"depth": 0
+	},
+	"folder": null,
+	"environment": null,
+	"globals": [],
+	"results": [
+		{
+			"name": "Autenticação e autorização",
+			"id": "bc91b5b5-38c0-4252-8eef-3311ee65eb7e",
+			"url": "http://suport-eval-prod.apigee.net/api-autenticacao-usuario/v1/login",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"error": null,
+				"name": "Validar se o código de status é 200",
+				"status": "pass",
+				"Validar se existe o token no response body.": true
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar se existe o token no response body.": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"528"
+			],
+			"allTests": [
+				{
+					"Validar se o código de status é 200": true,
+					"Validar se existe o token no response body.": true
+				}
+			],
+			"time": "528",
+			"totalRequestTime": "528",
+			"iterationResults": {}
+		},
+		{
+			"name": "Recuperar todos os usuários",
+			"id": "9c35cd88-8b3b-4943-8979-e5e7d19fefe8",
+			"url": "http://suport-eval-prod.apigee.net/api-criacao-conta-usuario/v1/accounts",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"error": null,
+				"name": "Validar se o código de status é 200",
+				"status": "pass",
+				"Validar se o corpo da resposta contem email": true
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar se o corpo da resposta contem email": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"436"
+			],
+			"allTests": [
+				{
+					"Validar se o código de status é 200": true,
+					"Validar se o corpo da resposta contem email": true
+				}
+			],
+			"time": "436",
+			"totalRequestTime": "436",
+			"iterationResults": {}
+		},
+		{
+			"name": "Criar um usuário",
+			"id": "64889574-0d94-49ba-bd08-443d6cc54303",
+			"url": "http://suport-eval-prod.apigee.net/api-criacao-conta-usuario/v1/accounts",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Criado",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"error": null,
+				"name": "Validar se o código de status é 201",
+				"status": "pass",
+				"Validar se existe o id no response body.": true
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar se existe o id no response body.": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"349"
+			],
+			"allTests": [
+				{
+					"Validar se o código de status é 201": true,
+					"Validar se existe o id no response body.": true
+				}
+			],
+			"time": "349",
+			"totalRequestTime": "349",
+			"iterationResults": {}
+		},
+		{
+			"name": "Recuperar uma conta pelo ID",
+			"id": "7b10e372-ed86-4f1a-91f6-94140f76f54e",
+			"url": "http://suport-eval-prod.apigee.net/api-criacao-conta-usuario/v1/accounts/8",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"error": null,
+				"name": "Validar se o código de status é 200",
+				"status": "pass",
+				"Validar se existe o id no response body.": true
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar se existe o id no response body.": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"530"
+			],
+			"allTests": [
+				{
+					"Validar se o código de status é 200": true,
+					"Validar se existe o id no response body.": true
+				}
+			],
+			"time": "530",
+			"totalRequestTime": "530",
+			"iterationResults": {}
+		},
+		{
+			"name": "Atualizar uma conta pelo ID",
+			"id": "1ecf4ea6-4776-4775-ab9f-7f4cee24b695",
+			"url": "http://suport-eval-prod.apigee.net/api-criacao-conta-usuario/v1/accounts/8",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 202,
+				"name": "Aceito",
+				"detail": {
+					"name": "Accepted",
+					"detail": "The request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place."
+				}
+			},
+			"tests": {
+				"error": null,
+				"name": "Validar se o código de status é 202",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 202": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"341"
+			],
+			"allTests": [
+				{
+					"Validar se o código de status é 202": true
+				}
+			],
+			"time": "341",
+			"totalRequestTime": "341",
+			"iterationResults": {}
+		},
+		{
+			"name": "Remover um usuário pelo ID",
+			"id": "4c956fc2-17c8-4ff5-9166-8f5bd04881e0",
+			"url": "http://suport-eval-prod.apigee.net/api-criacao-conta-usuario/v1/accounts/8",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "Sem conte?do",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"error": null,
+				"name": "Validar se o código de status é 204",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"348"
+			],
+			"allTests": [
+				{
+					"Validar se o código de status é 204": true
+				}
+			],
+			"time": "348",
+			"totalRequestTime": "348",
+			"iterationResults": {}
+		},
+		{
+			"name": "Recuperar todos os progressos",
+			"id": "62d32675-13a7-442a-9055-ea367187ca80",
+			"url": "http://suport-eval-prod.apigee.net/api-inclusao-dados-crescimento/v1/progress",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"error": null,
+				"name": "Validar se o código de status é 200",
+				"status": "pass",
+				"Validar se o corpo da resposta contem email": true
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar se o corpo da resposta contem email": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"309"
+			],
+			"allTests": [
+				{
+					"Validar se o código de status é 200": true,
+					"Validar se o corpo da resposta contem email": true
+				}
+			],
+			"time": "309",
+			"totalRequestTime": "309",
+			"iterationResults": {}
+		},
+		{
+			"name": "Criar um novo progresso",
+			"id": "d17c65e2-186c-467e-a2af-07edb2a28fa2",
+			"url": "http://suport-eval-prod.apigee.net/api-inclusao-dados-crescimento/v1/progress",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Criado",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"error": null,
+				"name": "Validar se o código de status é 201",
+				"status": "pass",
+				"Validar se existe o id no response body.": true
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar se existe o id no response body.": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"362"
+			],
+			"allTests": [
+				{
+					"Validar se o código de status é 201": true,
+					"Validar se existe o id no response body.": true
+				}
+			],
+			"time": "362",
+			"totalRequestTime": "362",
+			"iterationResults": {}
+		},
+		{
+			"name": "Recuperar um progresso pelo ID",
+			"id": "a9f00080-2b30-4851-9aec-6a1f6145937d",
+			"url": "http://suport-eval-prod.apigee.net/api-inclusao-dados-crescimento/v1/progress/8",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"error": null,
+				"name": "Validar se o código de status é 200",
+				"status": "pass",
+				"Validar se existe o id no response body.": true
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar se existe o id no response body.": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"318"
+			],
+			"allTests": [
+				{
+					"Validar se o código de status é 200": true,
+					"Validar se existe o id no response body.": true
+				}
+			],
+			"time": "318",
+			"totalRequestTime": "318",
+			"iterationResults": {}
+		},
+		{
+			"name": "Atualizar um progresso pelo ID",
+			"id": "7a77856b-4613-420f-b968-02737b61db86",
+			"url": "http://suport-eval-prod.apigee.net/api-inclusao-dados-crescimento/v1/progress/8",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 202,
+				"name": "Aceito",
+				"detail": {
+					"name": "Accepted",
+					"detail": "The request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place."
+				}
+			},
+			"tests": {
+				"error": null,
+				"name": "Validar se o código de status é 202",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 202": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"346"
+			],
+			"allTests": [
+				{
+					"Validar se o código de status é 202": true
+				}
+			],
+			"time": "346",
+			"totalRequestTime": "346",
+			"iterationResults": {}
+		},
+		{
+			"name": "Deletar um progresso pelo ID",
+			"id": "a1fe1ae6-f779-40e6-bd95-119ec5e19a08",
+			"url": "http://suport-eval-prod.apigee.net/api-inclusao-dados-crescimento/v1/progress/8",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "Sem conte?do",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"error": null,
+				"name": "Validar se o código de status é 204",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"310"
+			],
+			"allTests": [
+				{
+					"Validar se o código de status é 204": true
+				}
+			],
+			"time": "310",
+			"totalRequestTime": "310",
+			"iterationResults": {}
+		},
+		{
+			"name": "Relatório de crescimento por email do usuário",
+			"id": "f2fc8573-009e-4876-acca-a0db2e035108",
+			"url": "http://suport-eval-prod.apigee.net/api-relatorio-desempenho-crescimento/v1/accounts/test@test.com/progress",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"error": null,
+				"name": "Validar se o código de status é 200",
+				"status": "pass",
+				"Validar se existe o height no response body.": true
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar se existe o height no response body.": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"338"
+			],
+			"allTests": [
+				{
+					"Validar se o código de status é 200": true,
+					"Validar se existe o height no response body.": true
+				}
+			],
+			"time": "338",
+			"totalRequestTime": "338",
+			"iterationResults": {}
+		}
+	],
+	"totalPass": 20,
+	"totalFail": 0,
+	"totalTime": 4515,
+	"lifecycle": "done",
+	"requests": [
+		{
+			"name": "Autenticação e autorização",
+			"id": "bc91b5b5-38c0-4252-8eef-3311ee65eb7e",
+			"url": "http://suport-eval-prod.apigee.net/api-autenticacao-usuario/v1/login",
+			"time": "2019-01-19T19:04:13.085Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar se existe o token no response body.": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Recuperar todos os usuários",
+			"id": "9c35cd88-8b3b-4943-8979-e5e7d19fefe8",
+			"url": "http://suport-eval-prod.apigee.net/api-criacao-conta-usuario/v1/accounts",
+			"time": "2019-01-19T19:04:13.085Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar se o corpo da resposta contem email": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Criar um usuário",
+			"id": "64889574-0d94-49ba-bd08-443d6cc54303",
+			"url": "http://suport-eval-prod.apigee.net/api-criacao-conta-usuario/v1/accounts",
+			"time": "2019-01-19T19:04:13.085Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Criado",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar se existe o id no response body.": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Recuperar uma conta pelo ID",
+			"id": "7b10e372-ed86-4f1a-91f6-94140f76f54e",
+			"url": "http://suport-eval-prod.apigee.net/api-criacao-conta-usuario/v1/accounts/8",
+			"time": "2019-01-19T19:04:13.085Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar se existe o id no response body.": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Atualizar uma conta pelo ID",
+			"id": "1ecf4ea6-4776-4775-ab9f-7f4cee24b695",
+			"url": "http://suport-eval-prod.apigee.net/api-criacao-conta-usuario/v1/accounts/8",
+			"time": "2019-01-19T19:04:13.085Z",
+			"responseCode": {
+				"code": 202,
+				"name": "Aceito",
+				"detail": {
+					"name": "Accepted",
+					"detail": "The request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place."
+				}
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 202": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Remover um usuário pelo ID",
+			"id": "4c956fc2-17c8-4ff5-9166-8f5bd04881e0",
+			"url": "http://suport-eval-prod.apigee.net/api-criacao-conta-usuario/v1/accounts/8",
+			"time": "2019-01-19T19:04:13.085Z",
+			"responseCode": {
+				"code": 204,
+				"name": "Sem conte?do",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Recuperar todos os progressos",
+			"id": "62d32675-13a7-442a-9055-ea367187ca80",
+			"url": "http://suport-eval-prod.apigee.net/api-inclusao-dados-crescimento/v1/progress",
+			"time": "2019-01-19T19:04:13.085Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar se o corpo da resposta contem email": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Criar um novo progresso",
+			"id": "d17c65e2-186c-467e-a2af-07edb2a28fa2",
+			"url": "http://suport-eval-prod.apigee.net/api-inclusao-dados-crescimento/v1/progress",
+			"time": "2019-01-19T19:04:13.085Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Criado",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar se existe o id no response body.": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Recuperar um progresso pelo ID",
+			"id": "a9f00080-2b30-4851-9aec-6a1f6145937d",
+			"url": "http://suport-eval-prod.apigee.net/api-inclusao-dados-crescimento/v1/progress/8",
+			"time": "2019-01-19T19:04:13.085Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar se existe o id no response body.": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Atualizar um progresso pelo ID",
+			"id": "7a77856b-4613-420f-b968-02737b61db86",
+			"url": "http://suport-eval-prod.apigee.net/api-inclusao-dados-crescimento/v1/progress/8",
+			"time": "2019-01-19T19:04:13.085Z",
+			"responseCode": {
+				"code": 202,
+				"name": "Aceito",
+				"detail": {
+					"name": "Accepted",
+					"detail": "The request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place."
+				}
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 202": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Deletar um progresso pelo ID",
+			"id": "a1fe1ae6-f779-40e6-bd95-119ec5e19a08",
+			"url": "http://suport-eval-prod.apigee.net/api-inclusao-dados-crescimento/v1/progress/8",
+			"time": "2019-01-19T19:04:13.085Z",
+			"responseCode": {
+				"code": 204,
+				"name": "Sem conte?do",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Relatório de crescimento por email do usuário",
+			"id": "f2fc8573-009e-4876-acca-a0db2e035108",
+			"url": "http://suport-eval-prod.apigee.net/api-relatorio-desempenho-crescimento/v1/accounts/test@test.com/progress",
+			"time": "2019-01-19T19:04:13.085Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Validar se o código de status é 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar se existe o height no response body.": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		}
+	],
+	"synced": false
+}
