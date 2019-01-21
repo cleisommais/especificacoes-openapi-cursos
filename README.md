@@ -2,9 +2,9 @@
 
 ## Links dos curos na plataforma udemy com um cupom de desconto
 
-- link curso 01 - [ https://www.udemy.com/course/ ]
+- link curso 01 - [ https://www.udemy.com/aprenda-a-criar-especificacoes-de-apis-com-swagger-e-openapi/?couponCode=5P3C_0P3NAPI_5WAGG3 ]
 
-- link curso 02 - [ https://www.udemy.com/course/ ]
+- link curso 02 - [ https://www.udemy.com/implementando-apis-com-apigee-nodejs-docker-heroku/?couponCode=5P3C_0P3NAPI_5WAGG3 ]
 
 ---
 
