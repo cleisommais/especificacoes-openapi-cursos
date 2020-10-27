@@ -8,9 +8,7 @@ info:
 servers:
   - url: /
 security:
-  - application:
-      - read
-      - write
+  - BearerAuth: []
 paths:
   /accounts:
     get:
@@ -262,3 +260,8 @@ components:
           enum:
             - M
             - F
+  securitySchemes:                               
+    BearerAuth:
+      type: http
+      scheme: bearer  
+      bearerFormat: JWT    

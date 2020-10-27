@@ -8,9 +8,7 @@ info:
 servers:
 - url: /
 security:
-- application:
-  - read
-  - write
+  - BearerAuth: []
 paths:
   /accounts/{email}/progress:
     get:
@@ -71,3 +69,8 @@ components:
         dateProgress:
           type: string
           format: date
+  securitySchemes:                               
+    BearerAuth:
+      type: http
+      scheme: bearer  
+      bearerFormat: JWT                 
